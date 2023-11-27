@@ -1,0 +1,69 @@
+
+        <div class="container d-flex align-items-center justify-content-lg-between">
+            <section id="first-tab-group" class="tabgroup">
+                <div id="tab1">
+                    <div class="submit-form">
+                        <h4>BUSCA DE VOOS</h4>
+                        <form id="searchForm" method="POST" action="/buscaDeVoos">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <fieldset class="field-group">
+                                        <label for="origin">Cidade / Aeroporto de Origem:</label>
+                                        <select id="origin" name="origin" class="form-control">
+                                            <% aeroportos.forEach((aeroporto) => { %>
+                                                <option value="<%= aeroporto[0] %>"><%= aeroporto[1] %></option>
+                                            <% }); %>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset class="field-group">
+                                        <label for="destination">Cidade / Aeroporto de Destino:</label>
+                                        <select id="destination" name="destination" class="form-control">
+                                            <% aeroportos.forEach((aeroporto) => { %>
+                                                <option value="<%= aeroporto[0] %>"><%= aeroporto[1] %></option>
+                                            <% }); %>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset class="field-group">
+                                        <label for="tripType">Tipo de passagem:</label>
+                                        <select id="tripType" name="tripType" class="form-control">
+                                            <option value="roundtrip">Ida e volta</option>
+                                            <option value="one-way">Somente ida</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset class="field-group">
+                                        <label for="departureDate">Data de ida:</label>
+                                        <input type="date" id="departureDate" name="departureDate" class="form-control" />
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset class="field-group">
+                                        <label for="returnDate">Data de retorno:</label>
+                                        <input type="date" id="returnDate" name="returnDate" class="form-control" />
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <button type="submit" id="form-submit" class="btn" style="width: 500px; height: 35px" >Buscar</button>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+    
+        
+

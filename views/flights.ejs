@@ -1,0 +1,40 @@
+<div class="listado">
+  <h2>VOOS DISPONÍVEIS</h2>
+
+  <% if (voos && voos.length > 0) { %>
+      <% voos.forEach((voo) => { %>
+          <div class="voos">
+              <form action="/booking" method="post" class="flight-card">
+                  <div class="column">
+                      <p>ID do Voo: <%= voo[0] %></p>
+                      <p>Data: <%= voo[1].toLocaleDateString() %></p>
+                      <p>Horário de Partida: <%= voo[2].toLocaleTimeString() %></p>
+                      <p>Horário de Chegada: <%= voo[3].toLocaleTimeString() %></p>
+                  </div>
+                  <div class="column">
+                      <p>ID da Aeronave: <%= voo[4] %></p>
+                      <p>Origem: <%= voo[5] %></p>
+                      <p>Destino: <%= voo[6] %></p>
+                      <p>Preço:$</p>
+                      <input type="hidden" name="flightId" value="<%= voo[0] %>">
+                      <input type="hidden" name="data" value="<%= voo[1] %>">
+                      <input type="hidden" name="horaPartida" value="<%= voo[2] %>">
+                      <input type="hidden" name="horaChegada" value="<%= voo[3] %>">
+                      <input type="hidden" name="idAeronave" value="<%= voo[4] %>">
+                      <input type="hidden" name="origem" value="<%= voo[5] %>">
+                      <input type="hidden" name="destino" value="<%= voo[6] %>">
+                      
+                  </div>
+                  <button type="submit" style="background:gold">Comprar</button>
+              </form>
+          </div>
+      <% }); %>
+  <% } else { %>
+      <h1>Não foram encontrados voos.</h1>
+  <% } %>
+  <div class="atras-button">
+      <a href="/">
+          <button style="background: gold;">Voltar</button>
+      </a>
+  </div>
+</div>

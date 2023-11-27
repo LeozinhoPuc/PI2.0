@@ -1,0 +1,49 @@
+
+<input type="text" id="asientoIdInput" name="asientoId" readonly style="display: none;">
+
+<input type="text" id="nuevoEstadoInput" name="nuevoEstado" readonly style="display: none;">
+
+<div class="pago">
+    <h2>FORMULÁRIO DE PAGAMENTO</h2>
+
+    <div class="custom-payment-form">
+
+        <form id="customPaymentForm">
+
+            <div class="custom-form-group">
+                <label for="customName">Nome Completo:</label>
+                <input type="text" id="customName" name="customName" required>
+            </div>
+
+            <div class="custom-form-group">
+                <label for="customEmail">E-mail:</label>
+                <input type="email" id="customEmail" name="customEmail" required>
+            </div>
+
+            <div class="custom-form-group">
+                <label for="customPaymentMethod">Método de Pagamento:</label>
+                <select id="customPaymentMethod" name="customPaymentMethod" onchange="handlePaymentMethodChange()" required>
+                    <option value="pix">PIX</option>
+                    <option value="creditCard">Cartão de Crédito</option>
+                </select>
+            </div>
+
+            <div class="custom-form-group" id="creditCardFields">
+                <label for="creditCardNumber">Número do Cartão:</label>
+                <input type="text" id="creditCardNumber" name="creditCardNumber" placeholder="XXXX XXXX XXXX XXXX" readonly>
+            </div>
+
+            <div class="custom-form-group" id="creditCardExpiry">
+                <label for="creditCardExpiryDate">Data de Expiração:</label>
+                <input type="date" id="creditCardExpiryDate" name="creditCardExpiryDate" readonly>
+            </div>
+
+            <button type="button" id="payBtn">Pagar</button>
+
+        </form>
+    </div>
+
+    <div id="mensajeError" style="color: red;"></div>
+</div>
+
+<script src="/payments.js"></script>

@@ -1,0 +1,24 @@
+<div class="booking">
+    <h2>SELECIONE SEU ASSENTO</h2>
+    <h1>Detalhes do voo</h1>
+    <input type="hidden" id="flightId" value="<%= voo.flightId %>">
+    <p>-Origem: <%= voo.origem %></p>
+    <p>-Destino: <%= voo.destino %></p>
+    <p>-Data: <%= voo.data %></p>
+    <p>-Horário de partida: <%= voo.horaPartida %></p>
+    
+    <div class="seat-map">
+        <% mapaAsientos.forEach(seat => { %>
+            <div class="seat <%= seat[3].toLowerCase() %>" id="<%= seat[0] %>">
+                <span class="seat-number"><%= seat[1] %></span>
+            </div>
+        <% }); %>
+    </div>
+    
+    <div class="accept-button">
+        <button id="aceitarBtn">ACEITAR</button>
+    </div>
+    
+</div>
+
+<script src="/passagens.js"></script>
