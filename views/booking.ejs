@@ -8,7 +8,7 @@
     <p>-Horário de partida: <%= voo.horaPartida %></p>
     
     <div class="seat-map">
-        <% mapaAsientos.forEach(seat => { %>
+        <% MapaAssentos.forEach(seat => { %>
             <div class="seat <%= seat[3].toLowerCase() %>" id="<%= seat[0] %>">
                 <span class="seat-number"><%= seat[1] %></span>
             </div>

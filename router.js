@@ -19,10 +19,10 @@ router.get('/', async (req, res, next) => {
     // Consulta ao banco de dados para obter informações sobre aeroportos
     const sql = 'SELECT ID_AEROPORTO, CIDADE || \' - \' || NOME_AEROPORTO AS NOME_COMPLETO FROM AEROPORTOS_CIDADES';
     const result = await DB.Open(sql, [], false);
-    const aeropuertos = result.rows;
+    const aeroportos = result.rows;
 
     // Renderiza a página de busca com os aeroportos obtidos do banco de dados
-    res.render('search', { title: 'Express', aeropuertos });
+    res.render('search', { title: 'Express', aeroportos });
   } catch (error) {
     console.error(error);
     res.render('error', { error });
@@ -53,10 +53,10 @@ router.post('/buscaDeVoos', async (req, res) => {
       ORDER BY v.DATA, v.HORARIO_PARTIDA
     `;
     const result = await DB.Open(sql, [], false);
-    const vuelos = result.rows;
+    const voos = result.rows;
 
     // Renderiza a página de voos com os resultados obtidos
-    res.render('flights', { title: 'Express', vuelos });
+    res.render('flights', { title: 'Express', voos });
   } catch (error) {
     console.error(error);
     res.render('error', { error });
@@ -68,14 +68,14 @@ router.post('/booking', async (req, res) => {
   try {
     // Parâmetro da reserva
     const flightId = req.body.flightId;
-    const vuelo = req.body;
+    const voo = req.body;
 
     // Consulta ao banco de dados para obter informações sobre assentos disponíveis
     const result = await DB.Open('SELECT * FROM Mapa_Assentos WHERE VOO_ID = :flightId', [flightId], false);
-    const mapaAsientos = result.rows;
+    const MapaAssentos = result.rows;
 
     // Renderiza a página de reserva com os resultados obtidos
-    res.render('booking', { title: 'Express', vuelo, mapaAsientos });
+    res.render('booking', { title: 'Express', voo, MapaAssentos });
   } catch (error) {
     console.error(error);
     res.render('error', { error });
@@ -84,7 +84,7 @@ router.post('/booking', async (req, res) => {
 
 // Rota para processar a escolha de assentos
 router.post('/booking/assentos', (req, res) => {
-  const { asientoId, nuevoEstado } = req.body;
+  const { assentoID, novoEstado } = req.body;
   res.status(200).send('Solicitação processada com sucesso');
 });
 
@@ -92,11 +92,11 @@ router.post('/booking/assentos', (req, res) => {
 router.post('/booking/res', async (req, res) => {
   try {
     // Parâmetros do pagamento
-    const asientoId = req.body.asientoId;
-    const vueloId = req.body.vueloId;
+    const assentoID = req.body.assentoID;
+    const vooId = req.body.vooId;
 
     // Renderiza a página de pagamento com os resultados obtidos
-    res.render('pay', { title: 'Express', asientoId, vueloId });
+    res.render('pay', { title: 'Express', assentoID, vooId });
   } catch (error) {
     console.error(error);
     res.render('error', { error });
@@ -107,12 +107,12 @@ router.post('/booking/res', async (req, res) => {
 router.post('/pay/processPayment', async (req, res) => {
   try {
     // Parâmetros do pagamento efetivo
-    const asientoId = req.body.asientoId;
-    const vueloId = req.body.vueloId;
+    const assentoID = req.body.assentoID;
+    const vooId = req.body.vooId;
 
     // Atualiza o status do assento no banco de dados para 'VENDIDO'
-    const updateSql = 'UPDATE Mapa_Assentos SET STATUS = :status WHERE ID = :asientoId';
-    const updateParams = { asientoId, status: 'VENDIDO' };
+    const updateSql = 'UPDATE Mapa_Assentos SET STATUS = :status WHERE ID = :assentoID';
+    const updateParams = { assentoID, status: 'VENDIDO' };
     await DB.Open(updateSql, updateParams, true);
 
     // Envia resposta de sucesso

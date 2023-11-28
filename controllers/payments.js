@@ -34,8 +34,8 @@ function enviarDadosDePagamento() {
     const email = document.getElementById('customEmail').value;
     const metodoPagamento = document.getElementById('customPaymentMethod').value;
 
-    const idAssento = document.getElementById('asientoIdInput').value;
-    const novoEstado = document.getElementById('nuevoEstadoInput').value;
+    const idAssento = document.getElementById('AssentoIDInput').value;
+    const novoEstado = document.getElementById('novoEstadoInput').value;
 
     let numeroCartao = '';
     let dataExpiracao = '';
