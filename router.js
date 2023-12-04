@@ -54,7 +54,7 @@ router.post('/buscaDeVoos', async (req, res) => {
     `;
     const result = await DB.Open(sql, [], false);
     const voos = result.rows;
-
+    
     // Renderiza a página de voos com os resultados obtidos
     res.render('flights', { title: 'Express', voos });
   } catch (error) {
