@@ -70,7 +70,7 @@ function enviarDadosDePagamento() {
         if (data.includes('Erro:')) {
             alert('Desculpe, no momento não é possível processar o seu pagamento. Tente novamente mais tarde');
         } else {
-            alert('O pagamento foi concluído com sucesso');
+            alert('Sua passagem aérea foi emitida e enviada para seu email!');
         }
     })
     .catch(error => {
