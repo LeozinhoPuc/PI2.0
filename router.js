@@ -116,7 +116,7 @@ router.post('/pay/processPayment', async (req, res) => {
     await DB.Open(updateSql, updateParams, true);
 
     // Envia resposta de sucesso
-    res.send('Sua compra foi concluida com sucesso, informações serão enviadas no email informado.');
+    res.send('Sua passagem aérea foi emitida e enviada para seu email!');
   } catch (error) {
     const mensagemError = 'Erro';
     res.status(500).send(mensagemError);
