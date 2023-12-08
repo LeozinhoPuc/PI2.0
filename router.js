@@ -116,10 +116,10 @@ router.post('/pay/processPayment', async (req, res) => {
     await DB.Open(updateSql, updateParams, true);
 
     // Envia resposta de sucesso
-    res.send('Pagamento processado com sucesso.');
+    res.send('Sua compra foi concluida com sucesso, informações serão enviadas no email informado.');
   } catch (error) {
-    const mensajeError = 'Erro';
-    res.status(500).send(mensajeError);
+    const mensagemError = 'Erro';
+    res.status(500).send(mensagemError);
   }
 });
 
